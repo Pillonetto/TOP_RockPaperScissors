@@ -1,0 +1,156 @@
+html {
+    height: 100%;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-content: space-evenly;
+    padding: 0;
+    background-image: url("backgroundFive.jpg");
+    min-height: 98%;
+    background-position: center; 
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.btn {
+    height: min-content;
+    width: min-content;
+    border-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(32px);
+    border-radius: 16px;
+    background-color: rgba(186, 186, 186, 0.216);
+}
+
+span {
+    border-radius: 50%;
+    height: 20px;
+    width: 20px;
+    display: inline;
+    background-color: rgba(159, 158, 158, 0.71);
+    box-shadow: 0 0 3px rgb(91, 91, 91);
+}
+
+.header {
+    padding: 0 20px;
+    flex: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    backdrop-filter: blur(8px);
+}
+
+.title {
+    font-size: 36px;
+    color: rgb(53, 53, 53);
+}
+
+.score{
+    font-size: 36px;
+    margin: 0;
+    align-self: center;
+    color: rgb(53, 53, 53);
+}
+
+.btn.rock:hover{
+    box-shadow: 0 0 1rem green;
+}
+.btn.air:hover {
+    box-shadow: 0 0 1rem red;
+}
+.btn.water:hover {
+    box-shadow: 0 0 1rem skyblue;
+}
+
+.choiceboard {
+    max-width: fit-content;
+    border-radius: 16px;
+    align-self: center;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    backdrop-filter: blur(3px);
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.msgBoard {
+    background-color: rgba(217, 208, 208, 0.71);
+    margin: -16px;
+    margin-bottom: 8px;
+    padding-left: 16px;
+    padding-right: 16px;
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+    border-bottom-left-radius: 2px;
+    border-bottom-right-radius: 2px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.msg {
+    font-size: 26px;
+    color: rgb(73, 73, 73);
+    margin: 4px 0;
+}
+
+.msg2 {
+    margin: 0;
+    padding: 0;
+    font-size: 18px;
+    color: rgba(83, 83, 83, 0.787);
+    align-self: center;
+    margin-left: -160px;
+}
+
+.decorativeBtns {
+    display: flex;
+    gap: 10px;
+    align-self: center;
+}
+
+.choices {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+}
+
+.restart {
+    border-radius: 9px;
+    padding: 6px 28px;
+    background-image: linear-gradient(rgb(108, 164, 248), rgb(0, 119, 255));
+    color: white;
+    border-color: rgb(137, 182, 250);
+    border-width: 1px;
+    max-width: fit-content;
+    font-size: 22px;
+    align-self: center;
+}
+
+.disabledBtn {
+    background-image: linear-gradient(lightgray, lightgray);
+    color: gray;
+    border-color: gray;
+}
+
+.gameLog {
+    min-width: 85%;
+    min-height: 80px;
+    backdrop-filter: blur(12px);
+    flex: 0;
+    align-self: center;
+    display: flex;
+    justify-content: center;
+    border-top-right-radius: 16px;
+    border-top-left-radius: 16px;
+    box-shadow: 0 0 3px rgb(42, 42, 42);
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.gameConsole {
+    font-size: 25px;
+    color: rgb(244, 243, 243);
+}

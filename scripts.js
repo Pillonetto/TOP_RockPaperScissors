@@ -1,15 +1,48 @@
-//keep track of scores as global variables
-let playerScore;
-let computerScore;
+
+let btns = document.querySelectorAll(".btn");
+let restartButton = document.querySelector('.restart');
+let gameConsole = document.querySelector('.gameConsole');
+let gameScore = document.querySelector('.score');
+
+let playerScore = 0;
+let computerScore = 0;
+
+const disableButtons = () => {
+    btns.forEach(btns => btns.disabled = true);
+}
+
+btns.forEach(btns => btns.addEventListener('click', function(e) {
+    let choice = this.classList[1];
+    gameConsole.textContent = playRound(choice, computerPlay());
+
+    gameScore.textContent = `${playerScore} - ${computerScore}`;
+
+    if (playerScore > 4 || computerScore > 4) {
+
+        (playerScore == 5) ? gameConsole.textContent = "You've won! Press the button to restart" : 
+        gameConsole.textContent = "You lost, better luck next time! Press the button to restart";
+    
+        disableButtons();
+        
+        restartButton.classList.remove('disabledBtn');
+
+        restartButton.addEventListener('click', () => {
+            document.location.reload();
+        })
+    
+    }
+
+}));
+
 
 function computerPlay(){
-    let randomNumber = Math.floor(Math.random() * 10);
+    let randomNumber = (Math.floor(Math.random() * 9) + 1);
     //1,2,3
     if (randomNumber <= 3) return 'rock';
     //4.5.6
-    else if (randomNumber > 3 && randomNumber <= 6) return 'paper';
-    //7.8.9.10
-    else return 'scissors';
+    else if (randomNumber > 4 && randomNumber <= 6) return 'air';
+    //7.8.9
+    else return 'water';
 }
 
 function playRound(playerSelection, computerSelection){
@@ -17,59 +50,26 @@ function playRound(playerSelection, computerSelection){
     if (playerSelection === computerSelection) {
         return "It's a draw!";
     }
+    
     //check for each player choice and its winning situation. Increment playerScore and log win message
-    switch(playerSelection) {
-        case 'rock': 
-            if (computerSelection === 'scissors') {
-                playerScore++;
-                return "You win! Rock beats scissors."
-            }
-        case 'paper':
-            if (computerSelection === 'rock') {
-                playerScore++;
-                return "You win! Paper beats rock."
-            }
-        case 'scissors':
-            if (computerSelection === 'paper') {
-                playerScore++;
-                return "You win! Scissors beat paper."
-            }
-        //if winning situation is not fulfilled, it's a loss! increment computerScore and log loss message
-        default:
-            let compSelec2 = computerSelection.charAt(0).toUpperCase() + computerSelection.slice(1);
-            computerScore++;
-            return `You lose! ${compSelec2} beats ${playerSelection}.`
+
+    if (playerSelection === 'rock' && computerSelection === 'water') {
+        playerScore++;
+        return "You win! Rock beats water."
+    }
+    else if (playerSelection === 'air' && computerSelection === 'rock') {
+        playerScore++;
+        return "You win! Air beats rock."
+    }
+    else if (playerSelection === 'water' && computerSelection === 'air'){
+        playerScore++;
+        return "You win! Water beats air."
+    }
+    else {
+        let compSelec2 = computerSelection.charAt(0).toUpperCase() + computerSelection.slice(1);
+        computerScore++;
+        return `You lose! ${compSelec2} beats ${playerSelection}.`
     }
 }
 
-function game() {
-    //reset scoreboard for each game
-    let playerSelection;
-    playerScore = 0;
-    let computerSelection;
-    computerScore = 0;
-    //iterate over 5 rounds
-    for(let roundCount = 0; roundCount < 5; roundCount++) {
-        //get player choice
-        playerSelection = prompt("What's your choice?");
-        //if playerSelection is valid, proceed
-        if (playerSelection === 'rock' || 'paper' || 'scissors'){
-            computerSelection = computerPlay();
-            //if draw, make sure 5 rounds will still be played
-            if (playerSelection == computerSelection) roundCount--;
-            //print round result and scoreboard
-            console.log(playRound(playerSelection, computerSelection));
-            console.log(`Your score: ${playerScore} - Computer's score: ${computerScore}`);
-        }
-        //if player selection is invalid, return error message
-        else { 
-            return console.log("Invalid choice! Your options are rock, paper, scissors!");
-        }
-        //if game has ended, check for winner and print result
-        if(roundCount == 4) {
-            (playerScore > computerScore) ? console.log("You are the jankenpo champion!") : console.log("The computer won. Better luck next time!");
-        }
 
-    }
-    return;
-}

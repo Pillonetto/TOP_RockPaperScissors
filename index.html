@@ -5,8 +5,44 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock, Paper, Scissors</title>
-    <script src="scripts.js"></script>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+
+    <div class="header">
+        <h1 class="title">THE LAST AIRBENDER</h1>
+
+        <div class="scoreboard">
+            <p class="score">-</p>
+        </div>
+    </div>
+
+    <div class="choiceboard">
+        <div class="msgBoard">
+            <p class="msg">Choose your character!</p>
+            <p class="msg2">rock, air, water</p>
+            <div class="decorativeBtns">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+
+        <div class="choices">
+            <button class="btn rock"><img src="rockToph.png" height="300px"></button>
+            <button class="btn air"><img src="airAang.png" height="300px"></button>
+            <button class="btn water"><img src="waterKatara.png" height="300px"></button>
+        </div>
+    </div>
+
+    <button class="restart disabledBtn">Restart</button>
+
+    <div class="gameLog">
+        <p class="gameConsole">Choose your element!</p>
+    </div>
+
+
+    <script src="scripts.js"></script>
+
 </body>
 </html>
